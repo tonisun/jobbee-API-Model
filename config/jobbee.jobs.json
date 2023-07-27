@@ -1,0 +1,117 @@
+[{
+  "_id": {
+    "$oid": "64bcd89c28a22e2e457d8c84"
+  },
+  "title": "Ryby on Rails Developer (Software Engineer)",
+  "description": "We are looking for a Ruby on Rails Developer to join our team and help them both build new products and work on existing processes. You will be a part of a range of work streams from improving existing server and operation processes over translating functional requirements to code to developing new products from stratch.",
+  "email": "employeer@gmail.com",
+  "address": "200 Olympic Dr, Stafford, VA, 22554",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -77.37622,
+      38.49218
+    ],
+    "formattedAddress": "200 Olympic Dr, Stafford, VA 22554-7763, US",
+    "city": "Stafford",
+    "state": "VA",
+    "zipcode": "22554-7763",
+    "country": "US"
+  },
+  "company": "Star Tech",
+  "industry": [
+    "IT"
+  ],
+  "jobType": "Permanent",
+  "minEducation": "Masters",
+  "positions": 1,
+  "experience": "2 Years - 5 Years",
+  "salary": 120000,
+  "applicantsApplied": [],
+  "postingDate": {
+    "$date": "2023-07-23T07:37:00.063Z"
+  },
+  "lastDate": {
+    "$date": "2023-07-30T07:37:00.063Z"
+  },
+  "slug": "ryby-on-rails-developer-(software-engineer)",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64be5985e4936a2447ba0b3b"
+  },
+  "title": "Ryby on Rails Developer (Software Engineer)",
+  "description": "We are looking for a Ruby on Rails Developer to join our team and help them both build new products and work on existing processes. You will be a part of a range of work streams from improving existing server and operation processes over translating functional requirements to code to developing new products from stratch.",
+  "email": "employeer@gmail.com",
+  "address": "200 Olympic Dr, Stafford, VA, 22554",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -77.37622,
+      38.49218
+    ],
+    "formattedAddress": "200 Olympic Dr, Stafford, VA 22554-7763, US",
+    "city": "Stafford",
+    "state": "VA",
+    "zipcode": "22554-7763",
+    "country": "US"
+  },
+  "company": "Star Tech",
+  "industry": [
+    "IT"
+  ],
+  "jobType": "Permanent",
+  "minEducation": "Bechlore",
+  "positions": 1,
+  "experience": "2 Years - 5 Years",
+  "salary": 68000,
+  "applicantsApplied": [],
+  "postingDate": {
+    "$date": "2023-07-24T10:59:17.440Z"
+  },
+  "lastDate": {
+    "$date": "2023-07-31T10:59:17.440Z"
+  },
+  "slug": "ryby-on-rails-developer-(software-engineer)",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64be5a2c35833db7febbfde1"
+  },
+  "title": "Ryby Java Spring Boot Developer (Software Engineer)",
+  "description": "We are looking for a Java Spring Boot Developer to join our team and help them both build new products and work on existing processes. You will be a part of a range of work streams from improving existing server and operation processes over translating functional requirements to code to developing new products from stratch.",
+  "email": "employeer@gmail.com",
+  "address": "200 Olympicö Dr, Stafford, VA, 22554",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -77.37622,
+      38.49218
+    ],
+    "formattedAddress": "200 Olympic Dr, Stafford, VA 22554-7763, US",
+    "city": "Stafford",
+    "state": "VA",
+    "zipcode": "22554-7763",
+    "country": "US"
+  },
+  "company": "Star Tech",
+  "industry": [
+    "IT"
+  ],
+  "jobType": "Permanent",
+  "minEducation": "Masters",
+  "positions": 1,
+  "experience": "2 Years - 5 Years",
+  "salary": 360000,
+  "applicantsApplied": [],
+  "postingDate": {
+    "$date": "2023-07-24T11:02:04.700Z"
+  },
+  "lastDate": {
+    "$date": "2023-07-31T11:02:04.700Z"
+  },
+  "slug": "ruby-java-spring-boot-developer-(software-engineer)",
+  "__v": 0
+}]

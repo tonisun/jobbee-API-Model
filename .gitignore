@@ -1,0 +1,6 @@
+/node_modules
+/config/config.env
+/logs
+/utils/logger.js
+
+job_sample_data.json

@@ -1,0 +1,41 @@
+[
+    {
+        "title" : "Ryby on Rails Developer (Software Engineer)",
+        "description": "We are looking for a Ruby on Rails Developer to join our team and help them both build new products and work on existing processes. You will be a part of a range of work streams from improving existing server and operation processes over translating functional requirements to code to developing new products from stratch.",
+        "email": "employeer@gmail.com",
+        "address": "200 Olympic Dr, Stafford, VA, 22554",
+        "company": "Star Tech",
+        "industry": ["IT"],
+        "jobType": "Permanent",
+        "minEducation": "Masters",
+        "positions": 1,
+        "experience": "2 Years - 5 Years",
+        "salary": "120000"
+    },
+    {
+        "title" : "Ryby on Rails Developer Developer",
+        "description": "We are looking for a Ruby on Rails Developer to join our team and help them both build new products and work on existing processes. You will be a part of a range of work streams from improving existing server and operation processes over translating functional requirements to code to developing new products from stratch.",
+        "email": "employeer@gmail.com",
+        "address": "200 Olympic Dr, Stafford, VA, 22554",
+        "company": "Star Tech",
+        "industry": ["IT"],
+        "jobType": "Permanent",
+        "minEducation": "Bechlore",
+        "positions": 2,
+        "experience": "1 Years - 2 Years",
+        "salary": "68000"
+    },
+    {
+        "title" : "Ruby Java Spring Boot Developer (Software Engineer)",
+        "description": "We are looking for a Java Spring Boot Developer to join our team and help them both build new products and work on existing processes. You will be a part of a range of work streams from improving existing server and operation processes over translating functional requirements to code to developing new products from stratch.",
+        "email": "employeer@gmail.com",
+        "address": "200 Olympicö Dr, Stafford, VA, 22554",
+        "company": "Star Tech",
+        "industry": ["IT"],
+        "jobType": "Permanent",
+        "minEducation": "Masters",
+        "positions": 1,
+        "experience": "2 Years - 5 Years",
+        "salary": "360000"
+    }
+]
