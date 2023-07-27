@@ -8,6 +8,8 @@ const dotenv = require('dotenv')
 
 const errorMiddleware = require('./middlewares/errorMiddleware ')
 
+const faviconMiddleware = require('./middlewares/faviconMiddleware')
+
 // Set up config.env file variables
 dotenv.config({
     path: './config/config.env',
@@ -19,8 +21,20 @@ const connectDB = require('./config/database')
 // Connecting to database
 connectDB()
 
+const path = require('path')
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Setup body parser
 app.use(express.json())
+
+// No store for Cache
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store');
+    next();
+});
+
+// Setup faviconMiddleware
+faviconMiddleware(app)
 
 // Setup Logger
 app.use((req, res, next) => {
