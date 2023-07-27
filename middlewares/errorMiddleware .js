@@ -1,19 +1,3 @@
-/*
-module.exports = (err, req, res, next) => {
-
-    err.statusCode = err.statusCode || 500
-    err.message = err.message || 'Internal Server Error.'
-
-    logger.error(`Time: ${new Date().toISOString()}, Path: ${req.path}, Status: ${err.statusCode}, Error: ${err.stack}`)
-
-    res.status(err.statusCode).json({
-        success: false,
-        message: err.message
-    })
-    
-}
-*/
-
 module.exports = (err, req, res, next) => {
 
     err.statusCode = err.statusCode || 500
@@ -28,7 +12,7 @@ module.exports = (err, req, res, next) => {
             stack : err.stack
         })
     } 
-    
+
     if (process.env.NODE_ENV === "production") {
         let error = {...err}
 

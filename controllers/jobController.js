@@ -8,8 +8,10 @@ const ErrorHandler = require('../utils/errorHandler')
 
 const logger = require('../utils/logger')
 
+const catchAsyncErrors = require('../middlewares/catchAsyncErrors')
+
 // Get all Jobs => /api/v1/jobs
-exports.getJobs = async (req, res, next) => {
+exports.getJobs = catchAsyncErrors( async (req, res, next) => {
 
     //const jobs = await Job.find(req.query.jobs)
     const jobs = await Job.find()
@@ -19,10 +21,10 @@ exports.getJobs = async (req, res, next) => {
         results: jobs.length,
         data: jobs
     })  
-}
+})
 
 // Create a new Job => /api/v1/job/new
-exports.newJob = async (req, res, next) => {
+exports.newJob = catchAsyncErrors( async (req, res, next) => {
 
     console.log(req.body)
 
@@ -33,13 +35,13 @@ exports.newJob = async (req, res, next) => {
         message: 'Job was successfully created',
         data: job
     })
-}
+})
 
 
 
 
 // Get a job by ID  => /api/v1/job/:id
-exports.getJob = async (req, res, next) => {
+exports.getJob = catchAsyncErrors( async (req, res, next) => {
     const job = await Job.findById(req.params.id)
 
     if (!job) return next(new ErrorHandler( 'Job not found', 404 ))
@@ -49,10 +51,10 @@ exports.getJob = async (req, res, next) => {
         success: true,
         data: job
     })
-}
+})
 
 // Update a job => /api/v1/job/:id
-exports.updateJob = async (req, res, next) => {
+exports.updateJob = catchAsyncErrors( async (req, res, next) => {
 
     let job = await Job.findById(req.params.id)
 
@@ -73,10 +75,10 @@ exports.updateJob = async (req, res, next) => {
         message: 'Job updated successfully',
         data: job
     })
-}
+})
 
 // Delete a Job => /api/v1/job/:id
-exports.deleteJob = async (req, res, next) => {
+exports.deleteJob = catchAsyncErrors( async (req, res, next) => {
 
     let job = await Job.findById(req.params.id)
 
@@ -92,13 +94,13 @@ exports.deleteJob = async (req, res, next) => {
         success: true,
         message: 'Job was deleted successfully'
     })
-}
+})
 
 
 
 
 // Get a singel job by id and slug => /api/v1/job/:id/:slug
-exports.getJobBySlug = async (req, res, next) => {
+exports.getJobBySlug = catchAsyncErrors( async (req, res, next) => {
     //const job = await Job.findById(req.params.id)
     const job = await Job.find({
         $and: [
@@ -119,10 +121,10 @@ exports.getJobBySlug = async (req, res, next) => {
         success: true,
         data: job
     })
-}
+})
 
 // Search for a jobs with radius => /api/v1/jobs/:zipcode/:distance 
-exports.getJobsInRadius = async (req, res, next) => {
+exports.getJobsInRadius = catchAsyncErrors( async (req, res, next) => {
     const { zipcode, distance } = req.params
 
     // getting longitude and latitude from geoCoder with zipcode
@@ -152,10 +154,10 @@ exports.getJobsInRadius = async (req, res, next) => {
         results: jobs.length,
         data: jobs
     })
-}
+})
 
 // Get statistics about a topic(job) => /api/v1/stats/:topic
-exports.getJobStatistics = async (req, res, next) => {
+exports.getJobStatistics = catchAsyncErrors( async (req, res, next) => {
     const stats = await Job.aggregate([
         {
             $match: {
@@ -196,5 +198,5 @@ exports.getJobStatistics = async (req, res, next) => {
         success: true,
         data: stats
     })
-}
+})
 
