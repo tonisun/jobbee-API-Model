@@ -177,10 +177,7 @@ exports.getJobStatistics = catchAsyncErrors( async (req, res, next) => {
         }
     ])
 
-    if (stats.length === 0) return res.status(200).json({
-        success: false,
-        message: `No stats found for - ${req.params.topic}`
-    }) 
+    if (stats.length === 0) return next(new ErrorHandler( `No stats found for - ${req.params.topic}`, 200 ))
 
     res.status(200).json({
         success: true,
