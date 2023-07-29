@@ -19,6 +19,7 @@ dotenv.config({
 process.on('uncaughtException', err => {
     console.log(`ERROR: ${err.message}`);
     console.log(`Shutting down due to uncaught exception: ${err.stack}`);
+    process.exit(1)
 })
 
 // database.js import
@@ -104,4 +105,4 @@ process.on('unhandledRejection', err => {
 })
 
 
-console.log('Log: '+ jasduisdh);
+console.log(`${kjasdjkldjk}`);
