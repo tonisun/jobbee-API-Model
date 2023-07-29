@@ -53,7 +53,7 @@ const jobSchema = new mongoose.Schema({
     },
     industry: {
         type: [String],
-        required: true,
+        required: [true, 'Please enter industry for this job'],
         enum: {
             values: [
             'Business', 'IT', 'Banking', 'Education', 'Training', 'Telecommunication','Others'
