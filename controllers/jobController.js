@@ -46,7 +46,6 @@ exports.getJob = catchAsyncErrors( async (req, res, next) => {
 
     if (!job) return next(new ErrorHandler( 'Job not found', 404 ))
     
-
     res.status(200).json({
         success: true,
         data: job
@@ -58,12 +57,7 @@ exports.updateJob = catchAsyncErrors( async (req, res, next) => {
 
     let job = await Job.findById(req.params.id)
 
-    if (!job){
-        return res.status(404).json({
-            success: false,
-            massage: 'Job not found'
-        })
-    } 
+    if (!job) return next(new ErrorHandler( 'Job not found', 404 ))
 
     job = await Job.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
@@ -82,10 +76,7 @@ exports.deleteJob = catchAsyncErrors( async (req, res, next) => {
 
     let job = await Job.findById(req.params.id)
 
-    if (!job) return res.status(404).json({
-        success: false,
-        message: 'Job not found'
-    })
+    if (!job) return next(new ErrorHandler( 'Job not found', 404 ))
 
     job = await Job.findByIdAndDelete(req.params.id)
     
@@ -112,11 +103,8 @@ exports.getJobBySlug = catchAsyncErrors( async (req, res, next) => {
         ]
     })
 
-    if ( !job || job.length === 0 ) return res.status(404).json({
-        success: false,
-        message: 'Job not found.'
-    })
-
+    if (!job || job.length === 0 ) return next(new ErrorHandler( 'Job not found', 404 ))
+    
     res.status(200).json({
         success: true,
         data: job
