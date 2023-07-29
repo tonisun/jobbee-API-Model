@@ -17,7 +17,8 @@ dotenv.config({
 
 // Handling Uncaught Exceptions
 process.on('uncaughtException', err => {
-    
+    console.log(`ERROR: ${err.message}`);
+    console.log(`Shutting down due to uncaught exception: ${err.stack}`);
 })
 
 // database.js import
