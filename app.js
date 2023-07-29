@@ -15,6 +15,11 @@ dotenv.config({
     path: './config/config.env',
 })
 
+// Handling Uncaught Exceptions
+process.on('uncaughtException', err => {
+    
+})
+
 // database.js import
 const connectDB = require('./config/database')
 
@@ -81,8 +86,21 @@ app.use(errorMiddleware)
 
 // Starts the Server
 const API_PORT = process.env.API_PORT
-app.listen(API_PORT, () => {
+const server = app.listen(API_PORT, () => {
     console.log(`Time: ${new Date().toISOString()} => Server started at port ${API_PORT} in ${process.env.NODE_ENV} mode.`)  
     logger.info(`Time: ${new Date().toISOString()} => Server started at port ${API_PORT} in ${process.env.NODE_ENV} mode.`) 
 })
 
+// Handling Unhandled Promise Rejection
+process.on('unhandledRejection', err => {
+    console.log(`Time: ${new Date().toISOString()} => Error: ${err.message}`);
+    logger.error(`Time: ${new Date().toISOString()} => Unhandled Promise Rejection: ${err.message}`)
+    console.log(`Time: ${new Date().toISOString()} => Shutting down the server due to handled Promise Rejection.`)
+
+    server.close( () => {
+        process.exit(1)
+    })
+})
+
+
+console.log('Log: '+ jasduisdh);
