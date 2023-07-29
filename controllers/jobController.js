@@ -1,14 +1,10 @@
 const { escapeXML } = require('ejs')
-
 const Job = require('../models/Job')
-
 const geoCoder = require('../utils/geocoder')
-
 const ErrorHandler = require('../utils/errorHandler')
-
 const logger = require('../utils/logger')
-
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors')
+const APIFilters = require('../utils/apiFilters')
 
 // Get all Jobs => /api/v1/jobs
 exports.getJobs = catchAsyncErrors( async (req, res, next) => {
