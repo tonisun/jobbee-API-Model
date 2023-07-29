@@ -1,3 +1,6 @@
+const ErrorHandler  = require('../utils/errorHandler')
+const logger = require('../utils/logger')
+
 module.exports = (err, req, res, next) => {
 
     err.statusCode = err.statusCode || 500
@@ -17,6 +20,13 @@ module.exports = (err, req, res, next) => {
         let error = {...err}
 
         error.message = err.message
+
+        // Wrong Mongoose Object ID Error Message
+        if (err.name === 'CastError' && err.kind === 'ObjectId') {
+            const errMsg = `Resource not found. Invalid: ${err.path}`
+            error = new ErrorHandler(errMsg, 404)
+        }
+            
 
         res.status(err.statusCode).json({
             success : false,
