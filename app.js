@@ -45,6 +45,7 @@ app.use((req, res, next) => {
 // Setup faviconMiddleware
 faviconMiddleware(app)
 
+
 // Setup Logger
 app.use((req, res, next) => {
     const oldSend = res.send;
@@ -81,13 +82,14 @@ app.get('/test-error', (req, res, next) => {
 })
 
 
+
 // Importing all routes
 const jobRoutes = require('./routes/jobRoutes')
 app.use('/api/v1', jobRoutes)
 
 // Handle Unhandled Routes
 app.all('*', (req, res, next) => {
-    logger.error(`Time: ${new Date().toISOString()}, Path: ${req.path}, StatusCode: ${statusCode} , ${req.originalUrl} route not found`)
+    logger.error(`Time: ${new Date().toISOString()}, Path: ${req.path}, StatusCode: 404, ${req.originalUrl} route not found`)
     next( new ErrorHandler(`${req.originalUrl} route not found`, 404))
 })
 
