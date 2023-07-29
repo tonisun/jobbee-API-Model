@@ -10,6 +10,8 @@ const errorMiddleware = require('./middlewares/errorMiddleware ')
 
 const faviconMiddleware = require('./middlewares/faviconMiddleware')
 
+const ErrorHandler = require('./utils/errorHandler')
+
 // Set up config.env file variables
 dotenv.config({
     path: './config/config.env',
@@ -83,6 +85,12 @@ app.get('/test-error', (req, res, next) => {
 const jobRoutes = require('./routes/jobRoutes')
 app.use('/api/v1', jobRoutes)
 
+// Handle Unhandled Routes
+app.all('*', (req, res, next) => {
+    logger.error(`Time: ${new Date().toISOString()}, Path: ${req.path}, StatusCode: ${statusCode} , ${req.originalUrl} route not found`)
+    next( new ErrorHandler(`${req.originalUrl} route not found`, 404))
+})
+
 // Setup middlewares errorMiddleware
 app.use(errorMiddleware)
 
@@ -104,5 +112,3 @@ process.on('unhandledRejection', err => {
     })
 })
 
-
-console.log(`${kjasdjkldjk}`);
