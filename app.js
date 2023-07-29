@@ -107,7 +107,7 @@ const server = app.listen(API_PORT, () => {
 process.on('unhandledRejection', err => {
     console.log(`Time: ${new Date().toISOString()} => Error: ${err.message}`);
     logger.error(`Time: ${new Date().toISOString()} => Unhandled Promise Rejection: ${err.message}`)
-    console.log(`Time: ${new Date().toISOString()} => Shutting down the server due to handled Promise Rejection.`)
+    console.log(`Time: ${new Date().toISOString()} => Shutting down the server due to unhandled promise rejection.`)
 
     server.close( () => {
         process.exit(1)
