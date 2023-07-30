@@ -2,6 +2,7 @@
 /config/config.env
 /logs
 /utils/logger.js
+/public/images/*
 
 user_sample_data.json
 job_sample_data.json
