@@ -1,4 +1,4 @@
-
+const logger = require('./logger')
 
 class APIFilters {
 
@@ -7,10 +7,12 @@ class APIFilters {
         this.queryString = queryString
     }
 
-
     // First Filter
     filter() {
+        logger.info(`Time: ${new Date().toISOString()}, Query String: ${JSON.stringify(this.queryString)}`)
         this.query = this.query.find(this.queryString)
         return this
     }
 }
+
+module.exports = APIFilters
