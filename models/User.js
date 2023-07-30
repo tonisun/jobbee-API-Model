@@ -34,5 +34,7 @@ const userSchema = new mongoose.Schema({
     resetPasswordExpire: Date
 })
 
-module.exports = mongoose.model('User', userSchema)
+// In this case, Mongoose will associate the "User" Model Object
+// with the "users" collection in your MongoDB database.
+module.exports = mongoose.model('User', userSchema, 'users')
 
