@@ -85,7 +85,10 @@ app.get('/test-error', (req, res, next) => {
 
 // Importing all routes
 const jobRoutes = require('./routes/jobRoutes')
+const userRoutes = require('./routes/userRoutes')
+
 app.use('/api/v1', jobRoutes)
+app.use('/api/v1', userRoutes)
 
 // Handle Unhandled Routes
 app.all('*', (req, res, next) => {
