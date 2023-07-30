@@ -24,15 +24,22 @@ module.exports = (err, req, res, next) => {
         // Wrong Mongoose Object ID Error Message
         if (err.name === 'CastError' && err.kind === 'ObjectId') {
             const errMsg = `Resource not found. Invalid: ${err.path}`
-            error = new ErrorHandler(errMsg, 404)
+            error = new ErrorHandler (errMsg, 404)
         }
 
-        // Handling MongooseValidation Error Message
+        // Handling Mongoose Validation Error Message
         if (err.name === 'ValidationError') {
             const errMsg = Object.values(err.errors).map(value => value.message)
-            error = new ErrorHandler(errMsg, 400)
+            error = new ErrorHandler (errMsg, 400)
         }
-            
+           
+        // Handle mongoose key error
+        if (err.code === 11000){
+            const errMsg = `Duplicate ${Object.keys(err.keyValue)} entered.`
+            error = new ErrorHandler (errMsg, 400)
+        }
+
+        // Response
         res.status(error.statusCode).json({
             success : false,
             message : error.message || 'Internal Server Error.'

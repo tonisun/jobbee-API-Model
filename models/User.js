@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -33,6 +35,18 @@ const userSchema = new mongoose.Schema({
     resetPasswordToken: String,
     resetPasswordExpire: Date
 })
+
+// Encrypting password befor saving
+userSchema.pre('save', async function(next){
+    this.password = await bcrypt.hash(this.password, 10);
+})
+
+// Return JSON Web Token
+userSchema.methods.getJwtToken = function(){ 
+    return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRES_TIME
+    })
+}
 
 // In this case, Mongoose will associate the "User" Model Object
 // with the "users" collection in your MongoDB database.

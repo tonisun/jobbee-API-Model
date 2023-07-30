@@ -53,7 +53,7 @@ app.use((req, res, next) => {
   
     res.status = function (statusCode) {
         if (statusCode >= 400) {
-            logger.error(`Time: ${new Date().toISOString()}, Path: ${req.path}, StatusCode: ${statusCode}`)
+            logger.error(`Time: ${new Date().toString()}, Path: ${req.path}, StatusCode: ${statusCode}`)
         }
     
         return oldStatus.apply(this, arguments)
@@ -61,7 +61,7 @@ app.use((req, res, next) => {
   
     res.send = function (data) {
         if (!res.headersSent && res.statusCode >= 200 && res.statusCode < 300) {
-            logger.info(`Time: ${new Date().toISOString()}, Path: ${req.path}, StatusCode: ${res.statusCode}`)
+            logger.info(`Time: ${new Date().toString()}, Path: ${req.path}, StatusCode: ${res.statusCode}`)
         }
     
         return oldSend.apply(this, arguments)
@@ -77,7 +77,7 @@ app.get('/', ( req, res) => {
 
 // Test ErrorHandler
 app.get('/test-error', (req, res, next) => {
-    res.status(400).send(`<h1 align="center">Time: ${new Date().toISOString()}, Path: ${req.path}, StatusCode: >= 400</h1>`)
+    res.status(400).send(`<h1 align="center">Time: ${new Date().toString()}, Path: ${req.path}, StatusCode: >= 400</h1>`)
     next()
 })
 
@@ -92,7 +92,7 @@ app.use('/api/v1', userRoutes)
 
 // Handle Unhandled Routes
 app.all('*', (req, res, next) => {
-    logger.error(`Time: ${new Date().toISOString()}, Path: ${req.path}, StatusCode: 404, ${req.originalUrl} route not found`)
+    logger.error(`Time: ${new Date().toString()}, Path: ${req.path}, StatusCode: 404, ${req.originalUrl} route not found`)
     next( new ErrorHandler(`${req.originalUrl} route not found`, 404))
 })
 
@@ -102,15 +102,15 @@ app.use(errorMiddleware)
 // Starts the Server
 const API_PORT = process.env.API_PORT
 const server = app.listen(API_PORT, () => {
-    console.log(`Time: ${new Date().toISOString()} => Server started at port ${API_PORT} in ${process.env.NODE_ENV} mode.`)  
-    logger.info(`Time: ${new Date().toISOString()} => Server started at port ${API_PORT} in ${process.env.NODE_ENV} mode.`) 
+    console.log(`Time: ${new Date().toString()} => Server started at port ${API_PORT} in ${process.env.NODE_ENV} mode.`)  
+    logger.info(`Time: ${new Date().toString()} => Server started at port ${API_PORT} in ${process.env.NODE_ENV} mode.`) 
 })
 
 // Handling Unhandled Promise Rejection
 process.on('unhandledRejection', err => {
-    console.log(`Time: ${new Date().toISOString()} => Error: ${err.message}`);
-    logger.error(`Time: ${new Date().toISOString()} => Unhandled Promise Rejection: ${err.message}`)
-    console.log(`Time: ${new Date().toISOString()} => Shutting down the server due to unhandled promise rejection.`)
+    console.log(`Time: ${new Date().toString()} => Error: ${err.message}`);
+    logger.error(`Time: ${new Date().toString()} => Unhandled Promise Rejection: ${err.message}`)
+    console.log(`Time: ${new Date().toString()} => Shutting down the server due to unhandled promise rejection.`)
 
     server.close( () => {
         process.exit(1)
