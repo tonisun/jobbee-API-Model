@@ -3,5 +3,6 @@
 /logs
 /utils/logger.js
 
+user_sample_data.json
 job_sample_data.json
 package-lock.json
