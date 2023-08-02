@@ -5,6 +5,7 @@ const logger = require('./utils/logger')
 const app = express()
 
 const dotenv = require('dotenv')
+const cookieParser = require('cookie-parser')
 
 const errorMiddleware = require('./middlewares/errorMiddleware ')
 
@@ -35,6 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Setup body parser
 app.use(express.json())
+
+// Set cookie parser
+app.use(cookieParser())
 
 // No store for Cache
 app.use((req, res, next) => {
