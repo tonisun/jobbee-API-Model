@@ -3,9 +3,22 @@ const express = require('express')
 const jobRoutes = express.Router()
 
 // Importing jobs controller methods
-const { getJobs, newJob, getJobsInRadius, updateJob, deleteJob, getJob, getJobBySlug, getJobStatistics } = require('../controllers/jobController')
+const { 
+    getJobs, 
+    newJob, 
+    getJobsInRadius, 
+    updateJob, 
+    deleteJob, 
+    getJob, 
+    getJobBySlug, 
+    getJobStatistics 
+} = require('../controllers/jobController')
 
-const { isAuthenticatedUser, authorizeRoles } = require('../middlewares/authUser')
+// Importing users authentication and roles methods
+const { 
+    isAuthenticatedUser, 
+    authorizeRoles 
+} = require('../middlewares/authUser')
 
 jobRoutes.route('/jobs').get( getJobs )
 

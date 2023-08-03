@@ -112,3 +112,16 @@ exports.resetPassword = catchAsyncErrors( async(req, res, next) => {
 
     sendToken(user, 200, res)
 })
+
+// Logout user GET => /api/v1/logout
+exports.logout = catchAsyncErrors( async (req, res, next) => {
+    res.cookie('token', 'none', {
+        expites: new Date(Date.now()),
+        httpOnly: true
+    })
+
+    res.status(200).json({
+        success: true, 
+        message:'Logged out successfully'
+    })
+})
