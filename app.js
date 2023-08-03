@@ -85,8 +85,6 @@ app.get('/test-error', (req, res, next) => {
     next()
 })
 
-
-
 // Importing all routes
 const jobRoutes = require('./routes/jobRoutes')
 const userRoutes = require('./routes/userRoutes')
