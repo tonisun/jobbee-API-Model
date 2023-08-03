@@ -5,7 +5,7 @@ const jobRoutes = express.Router()
 // Importing jobs controller methods
 const { getJobs, newJob, getJobsInRadius, updateJob, deleteJob, getJob, getJobBySlug, getJobStatistics } = require('../controllers/jobController')
 
-const { isAuthenticatedUser } = require('../middlewares/authUser')
+const { isAuthenticatedUser, authorizeRoles } = require('../middlewares/authUser')
 
 jobRoutes.route('/jobs').get( getJobs )
 
@@ -15,11 +15,11 @@ jobRoutes.route('/job/:id/:slug').get( getJobBySlug )
 
 jobRoutes.route('/stats/:topic').get( getJobStatistics )
 
-jobRoutes.route('/job/new').post( isAuthenticatedUser, newJob )
+jobRoutes.route('/job/new').post( isAuthenticatedUser, authorizeRoles('employeer', 'admin'), newJob )
 
 jobRoutes.route('/job/:id')
     .get( getJob )
-    .put( isAuthenticatedUser, updateJob )
-    .delete( isAuthenticatedUser, deleteJob )
+    .put( isAuthenticatedUser, authorizeRoles('employeer', 'admin'), updateJob )
+    .delete( isAuthenticatedUser, authorizeRoles('employeer', 'admin'), deleteJob )
 
 module.exports = jobRoutes

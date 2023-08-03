@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const crypto = require('crypto')
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -52,6 +53,26 @@ userSchema.methods.getJwtToken = function(){
 userSchema.methods.comparePassword = async function(enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password)
 }
+
+// Generate user reset password token
+userSchema.methods.getResetPasswordToken = async function() {
+    // Generate token
+    const resetToken = await crypto
+        .randomBytes(20)
+        .toString('hex')
+
+    // Hash and set reset-password-token
+    this.resetPasswordToken = await crypto
+        .createHash('sha256')
+        .update(resetToken)
+        .digest('hex')
+
+    // Set token expire time
+    this.resetPasswordToken = Date.now() + 30*60*1000
+
+    return resetToken
+}
+
 
 // In this case, Mongoose will associate the "User" Model Object
 // with the "users" collection in your MongoDB database.
