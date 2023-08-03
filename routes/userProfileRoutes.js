@@ -3,7 +3,9 @@ const UserProfileRoutes = express.Router()
 
 const { 
     getUserProfile, 
-    updatePasswords 
+    updatePasswords,
+    updateUser,
+    deleteUser
 } = require('../controllers/userProfileController')
 
 const { 
@@ -15,5 +17,9 @@ const {
 UserProfileRoutes.route('/me').get( isAuthenticatedUser, getUserProfile )
 
 UserProfileRoutes.route('/password/update').put( isAuthenticatedUser, updatePasswords )
+
+UserProfileRoutes.route('/me/update').put( isAuthenticatedUser, updateUser )
+
+UserProfileRoutes.route('/me/delete').delete( isAuthenticatedUser, deleteUser )
 
 module.exports = UserProfileRoutes

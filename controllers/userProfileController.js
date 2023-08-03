@@ -14,7 +14,7 @@ exports.getUserProfile = catchAsyncErrors( async (req, res, next) => {
     })
 })
 
-// Update current user password POST => /api/v1/password/update
+// Update current user password PUT => /api/v1/password/update
 exports.updatePasswords = catchAsyncErrors( async (req, res, next) => {
 
     const user = await User.findById(req.user.id).select('+password')
@@ -30,3 +30,39 @@ exports.updatePasswords = catchAsyncErrors( async (req, res, next) => {
 
     sendToken(user, 200, res)
 })
+
+// Update current user data PUT => /api/v1/me/update
+exports.updateUser = catchAsyncErrors( async (req, res, next) => {
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email
+    }
+
+    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    })
+
+    res.status(200).json({
+        success: true,
+        data: user
+    })
+})
+
+// Delete current user DELETE => /api/v1/me/delete
+exports.deleteUser = catchAsyncErrors( async (req, res, next) => {
+
+    const user = await User.findByIdAndDelete(req.user.id)
+
+    res.cookie('token', 'none', {
+        expires: new Date( Date.now()),
+        httpOnly: true
+    }) 
+
+    res.status(200).json({
+        success: true,
+        message: 'Your account has been deleted successfully'
+    })
+})
+
