@@ -56,14 +56,21 @@ exports.forgotPassword = catchAsyncErrors( async ( req, res, next ) => {
     // Create reset password url
     const resetURL = `${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`
 
-    const message = `Your password reset link is as follow: \n\n<a href="${resetURL}">${resetURL}</a>
+    // Message as Text
+    const message = `Your password reset link is as follow: \n\n${resetURL}
     \n\nIf you have not request this, then pleasse ignore that.`
+
+    // Message as HTML
+    const messageHTML = `Your password reset link is as follow: <br><br>
+        <a href="${resetURL}">${resetURL}</a>
+        <br><br>   
+        If you have not request this, then pleasse ignore that.`
 
     try {
         await sendEmail({
             email: user.email,
             subject: 'Jobbee-API Password Recovery',
-            message
+            message: messageHTML
         })
     
         res.status(200).json({
@@ -77,6 +84,31 @@ exports.forgotPassword = catchAsyncErrors( async ( req, res, next ) => {
 
         return next( new ErrorHandler(`Email is not sent`, 500))
     }
+})
 
+// Reset Password POST => /api/v1/password/reset/:token
+exports.resetPassword = catchAsyncErrors( async(req, res, next) => {
+    // Hash URL Token
+    const resetPasswordToken = crypto
+        .createHash('sha256')
+        .update(req.params.token)
+        .digest('hex')
     
+    const user = await User.findOne({
+        resetPasswordToken,
+        resetPasswordExpire: {
+            $gt: Date.now()
+        }
+    })
+
+    if (!user) return next( new ErrorHandler(`Password Reset token is invalid.`, 400))
+
+    // Setup new password
+    user.password = req.body.password
+    user.resetPasswordToken = undefined
+    user.resetPasswordExpire = undefined
+
+    await user.save()
+
+    sendToken(user, 200, res)
 })

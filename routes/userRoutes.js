@@ -6,7 +6,8 @@ const userRoutes = express.Router()
 const { 
     registerUser, 
     loginUser,
-    forgotPassword
+    forgotPassword,
+    resetPassword
 } = require('../controllers/userController')
 
 userRoutes.route('/register').post( registerUser )
@@ -14,5 +15,7 @@ userRoutes.route('/register').post( registerUser )
 userRoutes.route('/login').post( loginUser )
 
 userRoutes.route('/password/forgot').post( forgotPassword )
+
+userRoutes.route('/password/reset/:token').put( resetPassword )
 
 module.exports = userRoutes
