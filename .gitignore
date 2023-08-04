@@ -3,6 +3,8 @@
 /logs
 /utils/logger.js
 /public/images/*
+/public/uploads/*
+
 
 user_sample_data.json
 job_sample_data.json

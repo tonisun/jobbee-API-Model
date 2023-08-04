@@ -53,7 +53,7 @@ exports.updateUser = catchAsyncErrors( async (req, res, next) => {
 // Delete current user DELETE => /api/v1/me/delete
 exports.deleteUser = catchAsyncErrors( async (req, res, next) => {
 
-    const user = await User.findByIdAndDelete(req.user.id)
+    await User.findByIdAndDelete(req.user.id)
 
     res.cookie('token', 'none', {
         expires: new Date( Date.now()),

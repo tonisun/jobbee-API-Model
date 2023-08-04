@@ -5,7 +5,10 @@ const logger = require('./utils/logger')
 const app = express()
 
 const dotenv = require('dotenv')
+
 const cookieParser = require('cookie-parser')
+
+const fileUpload = require('express-fileupload')
 
 const errorMiddleware = require('./middlewares/errorMiddleware ')
 
@@ -39,6 +42,9 @@ app.use(express.json())
 
 // Set cookie parser
 app.use(cookieParser())
+
+// Handle file uploads
+app.use(fileUpload())
 
 // No store for Cache
 app.use((req, res, next) => {

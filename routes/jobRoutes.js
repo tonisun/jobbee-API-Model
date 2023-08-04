@@ -11,7 +11,8 @@ const {
     deleteJob, 
     getJob, 
     getJobBySlug, 
-    getJobStatistics 
+    getJobStatistics,
+    applyJob
 } = require('../controllers/jobController')
 
 // Importing users authentication and roles methods
@@ -29,6 +30,8 @@ jobRoutes.route('/job/:id/:slug').get( getJobBySlug )
 jobRoutes.route('/stats/:topic').get( getJobStatistics )
 
 jobRoutes.route('/job/new').post( isAuthenticatedUser, authorizeRoles('employeer', 'admin'), newJob )
+
+jobRoutes.route('/job/:id/apply').put( isAuthenticatedUser, authorizeRoles('user'), applyJob )
 
 jobRoutes.route('/job/:id')
     .get( getJob )
