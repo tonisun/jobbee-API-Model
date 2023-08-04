@@ -192,7 +192,8 @@ exports.getJobStatistics = catchAsyncErrors( async (req, res, next) => {
 
 // Apply to job using Resume.pdf => /api/v1/job/:id/apply
 exports.applyJob = catchAsyncErrors( async (req, res, next) => {
-    let job = await Job.findById(req.params.id)
+
+    let job = await Job.findById(req.params.id).select('+applicantsApplied')
 
     if (!job) return next( new ErrorHandler(`Job not found.`, 404))
 
@@ -200,7 +201,13 @@ exports.applyJob = catchAsyncErrors( async (req, res, next) => {
     if (job.lastDate < new Date( Date.now())) return next( 
         new ErrorHandler(`You can not apply to this job. Date is over.`, 400)
     )
-    
+
+    // Check if user applied before
+    for (let i=0; i < job.applicantsApplied.length; i++)
+        if (job.applicantsApplied[i].id === req.user.id) return next ( 
+            new ErrorHandler(`You have already applied for this job.`, 400)
+        )
+
     // Check the files
     if (!req.files) return next(
         new ErrorHandler(`Please upload files to apply for this job.`, 400)
@@ -209,7 +216,7 @@ exports.applyJob = catchAsyncErrors( async (req, res, next) => {
     const file = req.files.file
 
     // Check file type or PDF or DOX
-    const supportedFiles = /.docs|.pdf/
+    const supportedFiles = /.docx|.pdf/
     if (!supportedFiles.test(path.extname(file.name))) return next( 
         new ErrorHandler(`Please upload files with doc or pdf extention.`, 400)
     )
@@ -220,7 +227,7 @@ exports.applyJob = catchAsyncErrors( async (req, res, next) => {
     )
 
     // Renaming file
-    file.name = `${req.user.name.replace(' ', '_')}_${job._id}_${path.parse(file.name).ext}`
+    file.name = `${req.user.name.replace(' ', '_')}_${job._id}${path.parse(file.name).ext}`
 
     file.mv(`${process.env.UPLOAD_PATH}/${file.name}`, async err => {
 
