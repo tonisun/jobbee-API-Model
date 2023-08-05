@@ -128,7 +128,6 @@ jobSchema.pre('save', async function(next) {
 
     this.location = {
         type: 'Point',
-        //coordinates: [loc.latitude, loc.longitude],
         coordinates: [loc[0].longitude , loc[0].latitude],
         formattedAddress: loc[0].formattedAddress,
         city: loc[0].city,

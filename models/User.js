@@ -35,6 +35,9 @@ const userSchema = new mongoose.Schema({
     },
     resetPasswordToken: String,
     resetPasswordExpire: Date
+},{
+    toJSON : { virtuals : true },
+    toObject : { virtuals : true }
 })
 
 // Encrypting password befor saving
@@ -74,6 +77,13 @@ userSchema.methods.getResetPasswordToken = function() {
     return resetToken
 }
 
+// Show all jobs created by user using virtuals
+userSchema.virtual('jobsPublished', {
+    ref : 'Job', // The model to use
+    localField : '_id', // Find user where `localField`  
+    foreignField : 'user', // this field here has to match the ref path we want to populate!   
+    justOne : false
+})
 
 // In this case, Mongoose will associate the "User" Model Object
 // with the "users" collection in your MongoDB database.
