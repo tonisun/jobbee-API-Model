@@ -1,8 +1,17 @@
 const mongoose = require('mongoose');
 const faker = require('faker');
 const User = require('../models/User');
+const itJobs = require('./itJobs');
 
 const MONGODB_URI = 'mongodb://127.0.0.1:27017/jobbee';  // Ersetzen Sie dies durch Ihre eigene URI
+
+const getRandomJobTitleWithDetails = () => {
+    const job = faker.random.arrayElement(itJobs);
+    const randomLanguage = faker.random.arrayElement(job.languages);
+    const randomTechnology = faker.random.arrayElement(job.technologies);
+    
+    return `${job.title} (${randomLanguage}, ${randomTechnology})`;
+}
 
 const jobGenerator = async (numberOfDataSets = 10) => {
     let generatedJobs = [];
@@ -23,7 +32,7 @@ const jobGenerator = async (numberOfDataSets = 10) => {
 
         for (let i = 0; i < numberOfDataSets; i++) {
             const randomEmployer = faker.random.arrayElement(employerUsers);
-
+    
             const industryOptions = ['Business', 'IT', 'Banking', 'Education', 'Training', 'Telecommunication', 'Others'];
             const jobTypeOptions = ['Permanent', 'Temporary', 'Internship', 'Home office'];
             const minEducationOptions = ['Bachelors', 'Masters', 'Phd'];
@@ -39,7 +48,7 @@ const jobGenerator = async (numberOfDataSets = 10) => {
                     zipcode: faker.address.zipCode(),
                     country: faker.address.country()
                 },
-                title: faker.name.jobTitle(),
+                title: getRandomJobTitleWithDetails(),
                 description: faker.lorem.paragraphs(2),
                 email: randomEmployer.email,
                 address: faker.address.streetAddress(),
@@ -49,8 +58,7 @@ const jobGenerator = async (numberOfDataSets = 10) => {
                 minEducation: faker.random.arrayElement(minEducationOptions),
                 positions: faker.datatype.number({ min: 1, max: 5 }),
                 experience: faker.random.arrayElement(experienceOptions),
-                salary: faker.datatype.number({ min: 50000, max: 230000 }),
-                //user: new mongoose.Types.ObjectId(randomEmployer._id),  
+                salary: faker.datatype.number({ min: 50000, max: 230000 }), 
                 user: { "$oid": String(randomEmployer._id) },              postingDate: new Date(),
                 lastDate: new Date().setDate(new Date().getDate() + 7),
                 applicantsApplied: [],
