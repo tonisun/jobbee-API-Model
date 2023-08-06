@@ -63,9 +63,17 @@ exports.getUserProfile = catchAsyncErrors( async (req, res, next) => {
             select : 'title postingDate'
         });
 
+    const jobsCount = user.jobsPublished.length;
+    // Create a new User object with the desired order
+    const userData = {
+        ...user._doc,  // Use _doc to get direct access to the mongoose doc data
+        jobsCount,
+        jobsPublished: user.jobsPublished
+    };
+
     res.status(200).json({
         success: true,
-        data: user
+        data: userData
     });
 });
 
