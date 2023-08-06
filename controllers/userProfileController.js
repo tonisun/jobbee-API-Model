@@ -56,23 +56,16 @@ exports.updateUser = catchAsyncErrors( async (req, res, next) => {
 
 // Get current user profile => /api/v1/me
 exports.getUserProfile = catchAsyncErrors( async (req, res, next) => {
-    console.log(req.user.id);
-    const jobs = await Job.find({ user: req.user.id })//.populate('jobsPublished', 'title postingDate');;
-    console.log(jobs);
-    const user = await User.findById(req.user.id).populate('jobsPublished', 'title postingDate');
-    console.log(user);
-    const userWithJobs = user.toObject();
-    userWithJobs.jobsPublished = jobs;
-
-    //user.populate('jobsPublished', 'title postingDate');
-
-    console.log(userWithJobs.jobsPublished);
+   
+    const user = await User.findById(req.user.id)
+        .populate({
+            path : 'jobsPublished',
+            select : 'title postingDate'
+        });
 
     res.status(200).json({
         success: true,
-        //user: user,
-        //jobsPublished: jobs,
-        data: userWithJobs
+        data: user
     });
 });
 

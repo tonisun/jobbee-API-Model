@@ -101,7 +101,7 @@ const jobSchema = new mongoose.Schema({
         select: false
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.ObjectId,
         ref: 'User',
         required: true
     }
