@@ -37,7 +37,7 @@ const jobGenerator = async (numberOfDataSets = 10) => {
                 address: faker.address.streetAddress(),
                 location: {
                     type: 'Point',
-                    coordinates: [faker.address.longitude(), faker.address.latitude()],
+                    coordinates: [parseFloat(faker.address.longitude()), parseFloat(faker.address.latitude())],
                     formattedAddress: faker.address.streetAddress(),
                     city: faker.address.city(),
                     state: faker.address.state(),
