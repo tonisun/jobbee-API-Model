@@ -21,5 +21,4 @@ const sendToken = async (user, statusCode, res) => {
         })
 }
 
-
 module.exports = sendToken

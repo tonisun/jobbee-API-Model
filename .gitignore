@@ -4,7 +4,7 @@
 /utils/logger.js
 /public/images/*
 /public/uploads/*
-
+/public/test-datas/*
 
 user_sample_data.json
 job_sample_data.json
