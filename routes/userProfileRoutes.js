@@ -13,7 +13,6 @@ const {
 } = require('../middlewares/authUser')
 
 
-
 UserProfileRoutes.route('/me').get( isAuthenticatedUser, getUserProfile )
 
 UserProfileRoutes.route('/password/update').put( isAuthenticatedUser, updatePasswords )

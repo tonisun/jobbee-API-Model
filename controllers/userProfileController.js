@@ -1,8 +1,12 @@
 const User = require('../models/User')
+const Job = require('../models/Job')
 const catchAsyncErrors = require('../middlewares/catchAsyncErrors')
 const ErrorHandler = require('../utils/errorHandler')
 const sendToken = require('../utils/jwtToken')
 const fs = require('fs')
+const mongoose = require('mongoose')
+
+const ObjectId = mongoose.Types.ObjectId;
 
 // Get current user profile GET => /api/v1/me
 exports.getUserProfile = catchAsyncErrors( async (req, res, next) => {
@@ -51,18 +55,26 @@ exports.updateUser = catchAsyncErrors( async (req, res, next) => {
 })
 
 // Get current user profile => /api/v1/me
-exports.getUserProfile = catchAsyncErrors( async (req,res,next) => {
+exports.getUserProfile = catchAsyncErrors( async (req, res, next) => {
+    console.log(req.user.id);
+    const jobs = await Job.find({ user: req.user.id })//.populate('jobsPublished', 'title postingDate');;
+    console.log(jobs);
+    const user = await User.findById(req.user.id).populate('jobsPublished', 'title postingDate');
+    console.log(user);
+    const userWithJobs = user.toObject();
+    userWithJobs.jobsPublished = jobs;
 
-    const user = await User.findById(req.user.id).populate({
-            path : 'jobsPublished',
-            select: 'title postingDate'
-        })
+    //user.populate('jobsPublished', 'title postingDate');
+
+    console.log(userWithJobs.jobsPublished);
 
     res.status(200).json({
         success: true,
-        data: user
-    })
-})
+        //user: user,
+        //jobsPublished: jobs,
+        data: userWithJobs
+    });
+});
 
 // Delete current user DELETE => /api/v1/me/delete
 exports.deleteUser = catchAsyncErrors( async (req, res, next) => {
@@ -85,7 +97,7 @@ exports.deleteUser = catchAsyncErrors( async (req, res, next) => {
 // Delete user files and employeer jobs
 async function deleteUserFiles(user, role) {
 
-    if (role === 'employeer') {
+    if (role === 'employer') {
         await Job.deleteMany({ user: user})
     }
 

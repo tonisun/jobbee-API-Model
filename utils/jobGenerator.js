@@ -30,11 +30,6 @@ const jobGenerator = async (numberOfDataSets = 10) => {
             const experienceOptions = ['No Experience', '1 Year - 2 Years', '2 Years - 5 Years', '5 Years +'];
 
             const job = {
-                title: faker.name.jobTitle(),
-                slug: faker.helpers.slugify(faker.name.jobTitle()),
-                description: faker.lorem.paragraphs(2),
-                email: faker.internet.email(),
-                address: faker.address.streetAddress(),
                 location: {
                     type: 'Point',
                     coordinates: [parseFloat(faker.address.longitude()), parseFloat(faker.address.latitude())],
@@ -44,19 +39,22 @@ const jobGenerator = async (numberOfDataSets = 10) => {
                     zipcode: faker.address.zipCode(),
                     country: faker.address.country()
                 },
+                title: faker.name.jobTitle(),
+                description: faker.lorem.paragraphs(2),
+                email: randomEmployer.email,
+                address: faker.address.streetAddress(),
                 company: faker.company.companyName(),
                 industry: faker.random.arrayElements(industryOptions, 1),
                 jobType: faker.random.arrayElement(jobTypeOptions),
                 minEducation: faker.random.arrayElement(minEducationOptions),
-                //positions: faker.random.number({ min: 1, max: 5 }),
                 positions: faker.datatype.number({ min: 1, max: 5 }),
                 experience: faker.random.arrayElement(experienceOptions),
-                //salary: faker.random.number({ min: 50000, max: 150000 }),
-                salary: faker.datatype.number({ min: 50000, max: 150000 }),
-                postingDate: new Date(),
+                salary: faker.datatype.number({ min: 50000, max: 230000 }),
+                //user: new mongoose.Types.ObjectId(randomEmployer._id),  
+                user: { "$oid": String(randomEmployer._id) },              postingDate: new Date(),
                 lastDate: new Date().setDate(new Date().getDate() + 7),
                 applicantsApplied: [],
-                user: randomEmployer._id
+                slug: faker.helpers.slugify(faker.name.jobTitle()).toLowerCase()
             }
 
             generatedJobs.push(job);

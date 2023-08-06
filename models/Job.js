@@ -1,11 +1,6 @@
 const mongoose = require('mongoose')
-
-
 const validator = require('validator')
-
-
 const slugify = require('slugify')
-
 const geoCoder = require('../utils/geocoder')
 
 
@@ -106,7 +101,7 @@ const jobSchema = new mongoose.Schema({
         select: false
     },
     user: {
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     }

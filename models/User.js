@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: {
-            values: [ 'user', 'admin', 'employeer' ],
+            values: [ 'user', 'admin', 'employer' ],
             message: 'Please select correct role.',
         },
         default: 'user',
@@ -79,7 +79,7 @@ userSchema.methods.getResetPasswordToken = function() {
 
 // Show all jobs created by user using virtuals
 userSchema.virtual('jobsPublished', {
-    ref : 'Job', // The model to use
+    ref : 'Job', // The ref model to use is Job
     localField : '_id', // Find user where `localField`  
     foreignField : 'user', // this field here has to match the ref path we want to populate!   
     justOne : false

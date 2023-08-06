@@ -29,13 +29,13 @@ jobRoutes.route('/job/:id/:slug').get( getJobBySlug )
 
 jobRoutes.route('/stats/:topic').get( getJobStatistics )
 
-jobRoutes.route('/job/new').post( isAuthenticatedUser, authorizeRoles('employeer', 'admin'), newJob )
+jobRoutes.route('/job/new').post( isAuthenticatedUser, authorizeRoles('employer', 'admin'), newJob )
 
 jobRoutes.route('/job/:id/apply').put( isAuthenticatedUser, authorizeRoles('user'), applyJob )
 
 jobRoutes.route('/job/:id')
     .get( getJob )
-    .put( isAuthenticatedUser, authorizeRoles('employeer', 'admin'), updateJob )
-    .delete( isAuthenticatedUser, authorizeRoles('employeer', 'admin'), deleteJob )
+    .put( isAuthenticatedUser, authorizeRoles('employer', 'admin'), updateJob )
+    .delete( isAuthenticatedUser, authorizeRoles('employer', 'admin'), deleteJob )
 
 module.exports = jobRoutes
