@@ -23,6 +23,11 @@ const jobSchema = new mongoose.Schema({
         "lowercase": true,
         validate: [ validator.isEmail, 'Please add a valid email address.']
     },
+    careersURL:{
+        type: String,
+        required: [ true, 'Please enter a career URL.' ],
+        validate: [ validator.isURL, 'Please enter a valid URL.' ]
+    },
     address: {
         type: String,
         required: [ true, 'Please add an address.']

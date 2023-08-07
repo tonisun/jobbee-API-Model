@@ -39,5 +39,5 @@ const saveJobsToFile = async (NUMBER_OF_JOBS) => {
     }
 };
 
-saveJobsToFile(10);
+saveJobsToFile(100);
 

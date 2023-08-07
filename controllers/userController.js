@@ -8,11 +8,12 @@ const crypto = require('crypto')
 // Register a new user POST => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 
-    const {name, email, password, role} = req.body
+    const {name, email, careersURL, password, role} = req.body
 
     const user = await User.create({
         name,
         email,
+        careersURL,
         password,
         role
     })
