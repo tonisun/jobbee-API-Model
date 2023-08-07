@@ -1,6 +1,6 @@
 # jobbee API 
 <img src="public/assets/images/documentation/node-js.svg" width="50" alt="NodeJs Icon"> 
-<!--<img src="public/assets/images/documentation/node-green.svg" height="100" alt="NodeJs Icon">--> 
+<!--<img src="public/assets/images/documentation/node-lila.svg" height="100" alt="NodeJs Icon">--> 
 
 ![Logo egosanto.de](public/assets/images/documentation/logo.png)
 
