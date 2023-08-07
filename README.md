@@ -1,7 +1,9 @@
-# jobbee API
+# jobbee API 
+<img src="public/assets/images/documentation/node-js.svg" width="50" alt="NodeJs Icon"> 
+
 ![Logo egosanto.de](public/assets/images/documentation/logo.png)
 
-<img src="public/assets/images/documentation/node-js.svg" width="50" alt="NodeJs Icon">
+
 <hr>
 
 ## 58. Sending JWT Token in Cookie
