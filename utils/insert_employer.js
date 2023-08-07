@@ -1,10 +1,10 @@
 const fs = require('fs');
 const axios = require('axios');
 
-// Pfad zu Ihrer JSON-Datei
+// Path to your JSON file
 const filePath = '../public/test-datas/ITEmployersList.json';
 
-// Liest die JSON-Datei
+// Read the JSON file
 fs.readFile(filePath, 'utf8', (err, jsonString) => {
     if (err) {
         console.log("Fehler beim Lesen der Datei:", err);
