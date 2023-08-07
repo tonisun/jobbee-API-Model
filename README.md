@@ -1,4 +1,4 @@
-# jobbee API <img src="public/assets/images/documentation/node-js.svg" width="40" alt="NodeJs Icon"> 
+# jobbee API <img src="public/assets/images/documentation/node-js.svg" width="45" alt="NodeJs Icon"> 
 <!--<img src="public/assets/images/documentation/node-js.svg" width="50" alt="NodeJs Icon"> 
 <img src="public/assets/images/documentation/node-lila.svg" height="100" alt="NodeJs Icon">--> 
 
