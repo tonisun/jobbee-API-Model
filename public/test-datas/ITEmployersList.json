@@ -1,0 +1,283 @@
+[
+    {
+      "name": "Apple Inc.",
+      "email": "careers@apple.com",
+      "careersURL": "https://www.apple.com/jobs/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Microsoft Corporation",
+      "email": "careers@microsoft.com",
+      "careersURL": "https://careers.microsoft.com",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Amazon.com Inc.",
+      "email": "careers@amazon.com",
+      "careersURL": "https://www.amazon.jobs/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Alphabet Inc. (Google)",
+      "email": "careers@google.com",
+      "careersURL": "https://careers.google.com/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Facebook Inc. (Meta)",
+      "email": "careers@facebook.com",
+      "careersURL": "https://www.facebook.com/careers/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Alibaba Group Holding Limited",
+      "email": "careers@alibaba.com",
+      "careersURL": "https://careers.alibaba.com/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Tencent Holdings Limited",
+      "email": "careers@tencent.com",
+      "careersURL": "https://careers.tencent.com/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "International Business Machines Corporation (IBM)",
+      "email": "careers@ibm.com",
+      "careersURL": "https://www.ibm.com/employment/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Oracle Corporation",
+      "email": "careers@oracle.com",
+      "careersURL": "https://www.oracle.com/corporate/careers/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "SAP SE",
+      "email": "careers@sap.com",
+      "careersURL": "https://www.sap.com/about/careers.html",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Visa Inc.",
+      "email": "careers@visa.com",
+      "careersURL": "https://www.visa.co.uk/careers.html",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Intel Corporation",
+      "email": "careers@intel.com",
+      "careersURL": "https://jobs.intel.com/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Cisco Systems, Inc.",
+      "email": "careers@cisco.com",
+      "careersURL": "https://www.cisco.com/c/en/us/about/careers.html",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Adobe Inc.",
+      "email": "careers@adobe.com",
+      "careersURL": "https://www.adobe.com/careers.html",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Samsung Electronics Co., Ltd.",
+      "email": "careers@samsung.com",
+      "careersURL": "https://www.samsung.com/us/careers/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "NVIDIA Corporation",
+      "email": "careers@nvidia.com",
+      "careersURL": "https://www.nvidia.com/en-us/about-nvidia/careers/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Salesforce.com, inc.",
+      "email": "careers@salesforce.com",
+      "careersURL": "https://www.salesforce.com/company/careers/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Paypal Holdings, Inc.",
+      "email": "careers@paypal.com",
+      "careersURL": "https://jobsearch.paypal-corp.com/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Broadcom Inc.",
+      "email": "careers@broadcom.com",
+      "careersURL": "https://www.broadcom.com/company/careers",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "ASML Holding N.V.",
+      "email": "careers@asml.com",
+      "careersURL": "https://www.asml.com/en/careers",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "TSMC (Taiwan Semiconductor Manufacturing Company, Limited)",
+      "email": "careers@tsmc.com",
+      "careersURL": "https://www.tsmc.com/english/careers",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Accenture plc",
+      "email": "careers@accenture.com",
+      "careersURL": "https://www.accenture.com/us-en/careers",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Texas Instruments Incorporated",
+      "email": "careers@ti.com",
+      "careersURL": "https://careers.ti.com/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Sony Corporation",
+      "email": "careers@sony.com",
+      "careersURL": "https://www.sony.net/SonyInfo/careers/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Dell Technologies Inc.",
+      "email": "careers@dell.com",
+      "careersURL": "https://jobs.dell.com/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "ServiceNow, Inc.",
+      "email": "careers@servicenow.com",
+      "careersURL": "https://www.servicenow.com/careers.html",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Advanced Micro Devices, Inc. (AMD)",
+      "email": "careers@amd.com",
+      "careersURL": "https://www.amd.com/en/corporate/careers",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Baidu, Inc.",
+      "email": "careers@baidu.com",
+      "careersURL": "https://talent.baidu.com/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Adobe Systems Incorporated",
+      "email": "careers@adobe-sys.com",
+      "careersURL": "https://www.adobe.com/careers.html",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Infosys Limited",
+      "email": "careers@infosys.com",
+      "careersURL": "https://www.infosys.com/careers/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Autodesk, Inc.",
+      "email": "careers@autodesk.com",
+      "careersURL": "https://www.autodesk.com/careers",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Activision Blizzard, Inc.",
+      "email": "careers@activision.com",
+      "careersURL": "https://careers.activision.com/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Intuit Inc.",
+      "email": "careers@intuit.com",
+      "careersURL": "https://www.intuit.com/careers/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Workday, Inc.",
+      "email": "careers@workday.com",
+      "careersURL": "https://www.workday.com/en-us/company/careers/overview.html",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "ZOOM Video Communications, Inc.",
+      "email": "careers@zoom.us",
+      "careersURL": "https://careers.zoom.us/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Uber Technologies, Inc.",
+      "email": "careers@uber.com",
+      "careersURL": "https://www.uber.com/us/en/careers/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Square, Inc.",
+      "email": "careers@square.com",
+      "careersURL": "https://squareup.com/us/en/careers",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "QUALCOMM Incorporated",
+      "email": "careers@qualcomm.com",
+      "careersURL": "https://www.qualcomm.com/company/careers",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "eBay Inc.",
+      "email": "careers@ebay.com",
+      "careersURL": "https://careers.ebayinc.com/",
+      "role": "employer",
+      "password": "temp1234"
+    },
+    {
+      "name": "Twilio Inc.",
+      "email": "careers@twilio.com",
+      "careersURL": "https://www.twilio.com/company/jobs",
+      "role": "employer",
+      "password": "temp1234"
+    }
+  ]
+  
