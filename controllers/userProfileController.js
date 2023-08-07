@@ -56,24 +56,65 @@ exports.updateUser = catchAsyncErrors( async (req, res, next) => {
 
 // Get current user profile => /api/v1/me
 exports.getUserProfile = catchAsyncErrors( async (req, res, next) => {
-   
-    const user = await User.findById(req.user.id)
-        .populate({
-            path : 'jobsPublished',
-            select : 'title postingDate'
-        });
 
-    const jobsCount = user.jobsPublished.length;
-    // Create a new User object with the desired order
-    const userData = {
-        ...user._doc,  // Use _doc to get direct access to the mongoose doc data
-        jobsCount,
-        jobsPublished: user.jobsPublished
-    };
+    const user = await User.findById(req.user.id);
+
+    let userData;
+
+    switch (user.role) {
+        case 'user':
+            // Suchen Sie nach allen Jobs, bei denen der Benutzer sich beworben hat
+            const appliedJobs = await Job.find({"applicantsApplied.id": req.user.id})
+                .select('title postingDate applicantsApplied.$');
+
+            // Ändern Sie die Struktur, um nur die benötigten Informationen zu behalten
+            const processedAppliedJobs = appliedJobs.map(job => {
+                const applicant = job.applicantsApplied[0]; // MongoDB gibt das gefilterte Array zurück, wir nehmen das erste (und einzige) Element
+                return {
+                    title: job.title,
+                    applicationDate: job.postingDate,
+                    resume: applicant.resume
+                };
+            });
+
+            const jobsAppliedCount = processedAppliedJobs.length;
+
+            userData = {
+                ...user._doc,
+                jobsAppliedCount,
+                appliedJobs: processedAppliedJobs,
+            };
+            break;
+
+        case 'employer':
+            const jobsPublished = await Job.find({user: req.user.id})
+                .select('title postingDate');
+
+            const jobsCount = jobsPublished.length;
+
+            userData = {
+                ...user._doc,
+                jobsCount,
+                jobsPublished
+            };
+            break;
+
+        case 'admin':
+            userData = {
+                ...user._doc
+            };
+            break;
+        
+        default:
+            return res.status(400).json({
+                success: false,
+                message: "Role not recognized",
+            });
+    }
 
     res.status(200).json({
         success: true,
-        data: userData
+        data: userData,
     });
 });
 
