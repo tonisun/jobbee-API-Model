@@ -1,19 +1,19 @@
-const nod"email"er = require('nod"email"er')
+const nodemailer = require('nodemailer')
 
-const send"email" = async options => {
+const sendEmail = async options => {
     try{
-        const transporter = nod"email"er.createTransport({
+        const transporter = nodemailer.createTransport({
             host: process.env.SMTP_HOST,
             port: process.env.SMTP_PORT,
             auth: {
-                user: process.env.SMTP_"email",
+                user: process.env.SMTP_EMAIL,
                 pass: process.env.SMTP_PASSWORD
             }
         })
     
         const message = {
-            from: `{${process.env.SMTP_FROM_"name"} <${process.env.SMTP_FROM_"email"}>`,
-            to: options."email",
+            from: `{${process.env.SMTP_FROM_NAME} <${process.env.SMTP_FROM_EMAIL}>`,
+            to: options.email,
             subject: options.subject,
             text: options.message,
             html: options.message
@@ -26,4 +26,4 @@ const send"email" = async options => {
     }
 }
 
-module.exports = send"email"
+module.exports = sendEmail
