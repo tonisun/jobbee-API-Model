@@ -51,6 +51,7 @@ const jobGenerator = async (numberOfDataSets = 10) => {
                 title: getRandomJobTitleWithDetails(),
                 description: faker.lorem.paragraphs(2),
                 email: randomEmployer.email,
+                careersURL: randomEmployer.careersURL,
                 address: faker.address.streetAddress(),
                 company: faker.company.companyName(),
                 industry: faker.random.arrayElements(industryOptions, 1),

@@ -9,11 +9,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [ true, 'Please enter your name.' ]
     },
-    email: {
+    careersURL:{
         type: String,
-        required: [ true, 'Please enter your email address.' ],
         unique: true,
-        validate: [ validator.isEmail, 'Please enter a valid email address.' ]
+        required: [ true, 'Please enter a career URL.' ],
+        validate: [ validator.isURL, 'Please enter a valid URL.' ]
     },
     role: {
         type: String,
